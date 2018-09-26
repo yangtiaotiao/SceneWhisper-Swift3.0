@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Code View Controller-->
+        <scene sceneID="Kc8-6S-G2z">
+            <objects>
+                <viewController storyboardIdentifier="SWQRCodeViewController" id="nuv-1v-TXn" customClass="SWQRCodeViewController" customModule="SceneWhisper" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="W95-N2-1R1"/>
+                        <viewControllerLayoutGuide type="bottom" id="UsY-H0-9t0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ohr-xU-tLE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yD8-Sb-RqE">
+                                <rect key="frame" x="0.0" y="508" width="320" height="60"/>
+                                <color key="backgroundColor" red="0.29411764705882354" green="0.29019607843137252" blue="0.38823529411764707" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="c7c-GZ-szc"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I5t-7P-ILA">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="85.5"/>
+                                <color key="backgroundColor" red="0.29411764705882354" green="0.29019607843137252" blue="0.38823529411764707" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="I5t-7P-ILA" secondAttribute="height" multiplier="375:100" id="Dwy-zA-z70"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="QR二维码Bg" translatesAutoresizingMaskIntoConstraints="NO" id="Zei-bV-1y5">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FqV-ON-g8s">
+                                <rect key="frame" x="15" y="20" width="45" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="WwQ-pH-KMY"/>
+                                    <constraint firstAttribute="height" constant="44" id="rHR-7k-Gtd"/>
+                                </constraints>
+                                <state key="normal" image="返回">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="goBackAction:" destination="nuv-1v-TXn" eventType="touchUpInside" id="uAX-KW-dL3"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="识别明信片" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ki5-JK-oh2">
+                                <rect key="frame" x="116.5" y="20" width="87" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="511-W8-v2C"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="将密信片中的二维码照片对准扫描框" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIl-qE-hWp">
+                                <rect key="frame" x="44.5" y="446" width="213" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="0.66103653169014087" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdk-aI-tn0">
+                                <rect key="frame" x="94" y="492" width="115" height="34"/>
+                                <state key="normal" backgroundImage="QR查看相册"/>
+                                <connections>
+                                    <action selector="photoButtonAction:" destination="nuv-1v-TXn" eventType="touchUpInside" id="EbY-xt-7DK"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="QR扫描线" translatesAutoresizingMaskIntoConstraints="NO" id="3sA-Ia-WL4">
+                                <rect key="frame" x="40.5" y="120.5" width="239" height="8"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="8" id="Sxj-hs-rkw"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gdk-aI-tn0" firstAttribute="centerX" secondItem="mIl-qE-hWp" secondAttribute="centerX" id="1aV-3y-OJ5"/>
+                            <constraint firstItem="Zei-bV-1y5" firstAttribute="leading" secondItem="ohr-xU-tLE" secondAttribute="leading" id="2NP-QC-LGI"/>
+                            <constraint firstItem="Zei-bV-1y5" firstAttribute="width" secondItem="ohr-xU-tLE" secondAttribute="width" id="30W-ei-5Jv"/>
+                            <constraint firstItem="FqV-ON-g8s" firstAttribute="top" secondItem="W95-N2-1R1" secondAttribute="bottom" id="C7i-7A-lcM"/>
+                            <constraint firstItem="Ki5-JK-oh2" firstAttribute="centerY" secondItem="FqV-ON-g8s" secondAttribute="centerY" id="Cou-ri-oma"/>
+                            <constraint firstAttribute="trailing" secondItem="yD8-Sb-RqE" secondAttribute="trailing" id="CpW-lj-jjg"/>
+                            <constraint firstItem="gdk-aI-tn0" firstAttribute="top" secondItem="mIl-qE-hWp" secondAttribute="bottom" constant="30" id="Ehi-lF-O7Y"/>
+                            <constraint firstItem="Ki5-JK-oh2" firstAttribute="centerX" secondItem="ohr-xU-tLE" secondAttribute="centerX" id="G7j-dg-UTk"/>
+                            <constraint firstAttribute="trailing" secondItem="I5t-7P-ILA" secondAttribute="trailing" id="GG2-e6-WIa"/>
+                            <constraint firstAttribute="trailing" secondItem="Zei-bV-1y5" secondAttribute="trailing" id="RnL-w2-NKO"/>
+                            <constraint firstItem="Zei-bV-1y5" firstAttribute="top" secondItem="ohr-xU-tLE" secondAttribute="top" id="SxQ-6v-iIJ"/>
+                            <constraint firstAttribute="bottom" secondItem="yD8-Sb-RqE" secondAttribute="bottom" id="Tx5-dC-eux"/>
+                            <constraint firstItem="I5t-7P-ILA" firstAttribute="width" secondItem="ohr-xU-tLE" secondAttribute="width" id="eFr-Bz-RfR"/>
+                            <constraint firstItem="I5t-7P-ILA" firstAttribute="leading" secondItem="ohr-xU-tLE" secondAttribute="leading" id="fIG-3s-ptj"/>
+                            <constraint firstItem="yD8-Sb-RqE" firstAttribute="leading" secondItem="ohr-xU-tLE" secondAttribute="leading" id="ffo-wv-8Br"/>
+                            <constraint firstItem="FqV-ON-g8s" firstAttribute="leading" secondItem="ohr-xU-tLE" secondAttribute="leading" constant="15" id="gyC-Jy-eoe"/>
+                            <constraint firstItem="3sA-Ia-WL4" firstAttribute="width" secondItem="ohr-xU-tLE" secondAttribute="width" multiplier="280:375" id="hhX-nF-uHR"/>
+                            <constraint firstItem="mIl-qE-hWp" firstAttribute="centerX" secondItem="ohr-xU-tLE" secondAttribute="centerX" constant="-9" id="iX6-fw-NOB"/>
+                            <constraint firstAttribute="bottom" secondItem="Zei-bV-1y5" secondAttribute="bottom" id="l0z-OX-UjD"/>
+                            <constraint firstItem="mIl-qE-hWp" firstAttribute="top" secondItem="3sA-Ia-WL4" secondAttribute="bottom" constant="317.5" id="niD-6Q-Lpt"/>
+                            <constraint firstItem="mIl-qE-hWp" firstAttribute="centerY" secondItem="ohr-xU-tLE" secondAttribute="centerY" constant="170" id="qM0-xM-ZhJ"/>
+                            <constraint firstItem="3sA-Ia-WL4" firstAttribute="centerX" secondItem="ohr-xU-tLE" secondAttribute="centerX" id="rAA-MV-5eK"/>
+                            <constraint firstItem="I5t-7P-ILA" firstAttribute="top" secondItem="ohr-xU-tLE" secondAttribute="top" id="zjV-2w-8WR"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="QRbgBottom" destination="l0z-OX-UjD" id="ki2-cn-5Er"/>
+                        <outlet property="QRbgTop" destination="SxQ-6v-iIJ" id="AEa-M3-e3A"/>
+                        <outlet property="lineY" destination="niD-6Q-Lpt" id="LvX-1d-uTd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MCj-yw-7qq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="68" y="36.431784107946029"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="QR二维码Bg" width="375" height="667"/>
+        <image name="QR扫描线" width="319" height="8"/>
+        <image name="QR查看相册" width="115" height="34"/>
+        <image name="返回" width="9" height="16"/>
+    </resources>
+</document>

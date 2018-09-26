@@ -1,0 +1,6 @@
+framework module HSSwiftExtensions {
+  umbrella header "HSSwiftExtensions-umbrella.h"
+
+  export *
+  module * { export * }
+}

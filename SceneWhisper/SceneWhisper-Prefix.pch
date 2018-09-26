@@ -1,0 +1,35 @@
+//
+//  SceneWhisper-Prefix.pch
+//  SceneWhisper
+//
+//  Created by weipo on 2017/6/3.
+//  Copyright © 2017年 weipo. All rights reserved.
+//
+
+#ifndef SceneWhisper_Prefix_pch
+#define SceneWhisper_Prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import "UIColor+Hex.h"
+
+#define kScreenWidth [UIScreen mainScreen].bounds.size.width
+#define kScreenHeight [UIScreen mainScreen].bounds.size.height
+
+#define WINDOW [[UIApplication sharedApplication] keyWindow]
+//video
+#define RECORD_MAX_TIME 60.0           //最长录制时间
+#define TIMER_INTERVAL 0.05         //计时器刷新频率
+#define VIDEO_FOLDER @"videoFolder" //视频录制存放文件夹
+
+#ifdef __OBJC__ 
+
+//#import <SMS_SDK/SMSSDK.h>
+#import "XCFileManager.h"
+
+#endif
+
+
+
+#endif /* SceneWhisper_Prefix_pch */
