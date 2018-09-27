@@ -17,6 +17,14 @@ DerivedData/
 !default.perspectivev3
 xcuserdata/
 
+*.xcuserstate
+project.xcworkspace
+xcuserdata
+UserInterfaceState.xcuserstate
+project.xcworkspace/
+xcuserdata/
+UserInterface.xcuserstate
+
 ## Other
 *.moved-aside
 *.xccheckout
@@ -27,6 +35,18 @@ xcuserdata/
 *.ipa
 *.dSYM.zip
 *.dSYM
+
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# Swift Package Manager
+#
+# Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
+# Packages/
+# Package.pins
+# Package.resolved
+.build/
 
 # CocoaPods
 #
@@ -64,4 +84,3 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
-
