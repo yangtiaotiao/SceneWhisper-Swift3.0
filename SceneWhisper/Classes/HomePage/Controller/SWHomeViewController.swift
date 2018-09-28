@@ -66,8 +66,6 @@ class SWHomeViewController: UIViewController {
         //为经纬度控件添加红线
         self.addRedLine()
         
-        //获取用户信息
-        userInfoModel = SWDataManager.manager.currentUserInfo() as SWUserInfoModel
         //头像
         avatarImageView.layer.masksToBounds = true
         avatarImageView.layer.cornerRadius = avatarImageView.frame.width / 2.0
@@ -82,6 +80,8 @@ class SWHomeViewController: UIViewController {
         super.viewWillAppear(animated)
    
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        //获取用户信息
+        userInfoModel = SWDataManager.manager.currentUserInfo() as SWUserInfoModel
         //头像
         avatarImageView.sd_setImage(with: URL(string: (SWUrlHeader + userInfoModel.photo)), placeholderImage: UIImage(named: "im_user_head_default"))
         

@@ -206,6 +206,17 @@ class SWRequestManager {
         }
         
     }
+    
+    // 删除密语信息
+    class func deleteMessage(_ parameters: Dictionary<String, Any>, responseCompletion: responseCompletion) {
+        let url = SWUrlHeader + "m/m/deleteMessage"
+        let method: HTTPMethod = .post
+        HSRequest.request(url, method: method, parameters: parameters, success: { (data) in
+            responseCompletion!(data, nil)
+        }) { (error) in
+            responseCompletion!(nil, error)
+        }
+    }
 }
 
 

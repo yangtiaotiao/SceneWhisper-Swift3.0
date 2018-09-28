@@ -18,6 +18,7 @@ class SWMeViewController: UIViewController {
     
     fileprivate var circleCente: CGPoint! // 椭圆中心
     
+    @IBOutlet var doneLabel: UILabel!
     var infoEditType: Int = 0 //0:头像，1:签名，2:性别 3:名字
     var avatarImage: UIImage? //临时头像
     var infoMenuViewOriginalY: CGFloat = 0.0 //信息菜单的原始位置Y
@@ -47,6 +48,11 @@ class SWMeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //设置完成按钮
+        doneLabel.layer.borderColor = UIColor.white.cgColor
+        doneLabel.layer.borderWidth = 1.0
+        doneLabel.layer.cornerRadius = 2.5
+        
         // 椭圆中心
         circleCente = CGPoint(x: 150*KScaleW, y: 45*KScaleW)
         
@@ -56,11 +62,7 @@ class SWMeViewController: UIViewController {
         //设置信息功能按钮
         infoFunctionButton.layer.masksToBounds = true
         infoFunctionButton.layer.cornerRadius = 158.0 * KScaleW / 2.0
-        
-        //设置用户头像
-        if avatarImage != nil {
-            infoFunctionButton.setBackgroundImage(avatarImage!, for: .normal)
-        }
+  
         // 获取签名
         let signatureImageURL = URL.init(string: SWUrlHeader + (userInfoModel?.signatureUrl)!)
         guard let signatureImagedata = NSData(contentsOf: signatureImageURL!) else { return }
@@ -82,29 +84,18 @@ class SWMeViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        //        IQKeyboardManager.sharedManager().enableAutoToolbar = false
-        //        IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = false
+        //设置用户头像
+        if avatarImage != nil {
+            infoFunctionButton.setBackgroundImage(avatarImage!, for: .normal)
+        }
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        //        IQKeyboardManager.sharedManager().enableAutoToolbar = true
-        //        IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
-    }
-    //页面返回事件处理
+    //页面返回
     @IBAction func getbackButtonClicked(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    //用户名设置事件处理
-    @IBAction func userNameButtonDidClicked(_ sender: UIButton) {
-        infoTipsButton.setTitle("点击更换名字", for: .normal)
-        infoTitleLabel.text = "名字"
-        infoEditType = 3
-        infoFunctionButton.isHidden = true
-        userNameText.isHidden = false
-    }
-    //签名设置事件处理
-    @IBAction func signatButtonDidClicked(_ sender: UIButton) {
-        
+   
+    // 功能选择
+    @IBAction func functionButtonDidClicked(_ sender: UIButton) {
         
         var scale:CGFloat
         if (sender.center.x > circleCente.x + 10.0) {
@@ -117,27 +108,40 @@ class SWMeViewController: UIViewController {
             scale = 0
         }
         
-        sexButton.createCircleAnimation(withCircleCenter: circleCente, offset: scale)//性别按钮
-        avatrarButton.createCircleAnimation(withCircleCenter: circleCente, offset: scale)//头像按钮
-        signatureButton.createCircleAnimation(withCircleCenter: circleCente, offset: scale)//签名按钮
-        userNameButton.createCircleAnimation(withCircleCenter: circleCente, offset: scale)// 用户名
+        sexButton.createCircleAnimation(withCircleCenter: circleCente, offset: scale)//性别按钮1303
+        avatrarButton.createCircleAnimation(withCircleCenter: circleCente, offset: scale)//头像按钮1302
+        signatureButton.createCircleAnimation(withCircleCenter: circleCente, offset: scale)//签名按钮1301
+        userNameButton.createCircleAnimation(withCircleCenter: circleCente, offset: scale)// 用户名1304
+        switch sender.tag {
+        case 1301:
+            self.signatButtonDidClicked(sender)
+        case 1302:
+            self.avatarButtonDidClicked(sender)
+        case 1303:
+            self.sexButtonDidClicked(sender)
+        case 1304:
+            self.userNameButtonDidClicked(sender)
+        default:
+            return
+        }
         
-        //        if signatureImage == nil {
-        //            infoFunctionButton.setBackgroundImage(UIImage(named:"w个性签名"), for: .normal)
-        //        } else {
-        //            infoFunctionButton.setBackgroundImage(signatureImage!, for: .normal)
-        //        }
-        //        infoTipsButton.setTitle("点击设置签名", for: .normal)
-        //        infoTitleLabel.text = "签名"
-        //        infoEditType = 1
-        //
-        //        infoFunctionButton.isHidden = false
-        //        userNameText.isHidden = true
     }
-    
-    //头像设置事件处理
-    @IBAction func avatarButtonDidClicked(_ sender: Any) {
+    //签名设置
+    func signatButtonDidClicked(_ sender: UIButton) {
+                if signatureImage == nil {
+                    infoFunctionButton.setBackgroundImage(UIImage(named:"w个性签名"), for: .normal)
+                } else {
+                    infoFunctionButton.setBackgroundImage(signatureImage!, for: .normal)
+                }
+                infoTipsButton.setTitle("点击设置签名", for: .normal)
+                infoTitleLabel.text = "签名"
+                infoEditType = 1
         
+                infoFunctionButton.isHidden = false
+                userNameText.isHidden = true
+    }
+    //头像设置
+    func avatarButtonDidClicked(_ sender: Any) {
         
         if avatarImage == nil {
             infoFunctionButton.setBackgroundImage(UIImage(named:"W头像圆"), for: .normal)
@@ -153,8 +157,8 @@ class SWMeViewController: UIViewController {
         userNameText.isHidden = true
     }
     
-    //性别设置事件处理
-    @IBAction func sexButtonDidClicked(_ sender: Any) {
+    //性别设置
+    func sexButtonDidClicked(_ sender: Any) {
         
         if genders == 0 {
             infoFunctionButton.setBackgroundImage(UIImage(named:"w男"), for: .normal)
@@ -171,7 +175,14 @@ class SWMeViewController: UIViewController {
         infoFunctionButton.isHidden = false
         userNameText.isHidden = true
     }
-    
+    //用户名设置
+    func userNameButtonDidClicked(_ sender: UIButton) {
+        infoTipsButton.setTitle("点击更换名字", for: .normal)
+        infoTitleLabel.text = "名字"
+        infoEditType = 3
+        infoFunctionButton.isHidden = true
+        userNameText.isHidden = false
+    }
     //信息功能按钮事件处理
     @IBAction func infoFunctionButtonDidClicked(_ sender: Any) {
         
@@ -281,8 +292,9 @@ class SWMeViewController: UIViewController {
         return newImage
         
     }
-    //MARK:更新用户信息请求
-    func updateUserInfo() {
+    //MARK:更新用户信息请求 - 完成
+    @IBAction func doneButtonDidClick(_ sender: UIButton) {
+        self.view.endEditing(true)
         /*
          userId 用户 Id Long
          nickName 昵称 Id String-没有修改时不传参数
@@ -290,7 +302,7 @@ class SWMeViewController: UIViewController {
          signature 签名图片 file-没有修改时不传参数
          photo 头像图片 file-没有修改时不传参数
          */
-        
+        userName = userNameText.text
         let parameters = ["userId":SWDataManager.currentUserId(),
                           "nickName":userName ?? "",
                           "genders":genders,
@@ -337,6 +349,7 @@ class SWMeViewController: UIViewController {
                     upload.uploadProgress(queue: DispatchQueue.global(qos: .utility)) { progress in
                         print("图片上传进度: \(progress.fractionCompleted)")
                     }
+                    SVProgressHUD.showSuccess(withStatus: "修改成功")
                 case .failure(let encodingError):
                     // 失败原因
                     SVProgressHUD.showError(withStatus: (encodingError as! String))
@@ -358,7 +371,6 @@ extension SWMeViewController: SWUserInfoPickerViewDelegate {
             genders = 1
             infoFunctionButton.setBackgroundImage(UIImage(named:"w女"), for: .normal)
         }
-        self.updateUserInfo()
     }
     
     func pickerView(_ view: SWUserInfoPickerView, didSelectedAvatarAtIndex index: Int) {
@@ -383,8 +395,7 @@ extension SWMeViewController: UIImagePickerControllerDelegate {
         //        avatarImage = image as? UIImage
         self.perform(#selector(saveAvatarImage(_:)), with: image, afterDelay: 0.5)
         picker.dismiss(animated: true, completion: nil)
-        // 请求更新用户信息
-        updateUserInfo()
+
     }
 }
 
@@ -403,22 +414,10 @@ extension SWMeViewController: SWSignatureBoardViewDelegate {
         if image != nil {
             signatureImage = image
             infoFunctionButton.setBackgroundImage(image, for: .normal)
-            // 请求更新用户信息
-            updateUserInfo()
+
         }
     }
     
-}
-
-extension SWMeViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        
-        userName = textField.text
-        updateUserInfo()
-        print("完成按钮")
-        return true
-    }
 }
 
 

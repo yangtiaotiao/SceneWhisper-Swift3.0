@@ -18,6 +18,11 @@ class HSResponseHandler {
     class func handle(response: DataResponse<Any>?) -> HSResponseHandler {
         
         let handler = HSResponseHandler()
+        if response?.value == nil {
+            handler.error = HSErrorResponse(code: "-400000", message: "没有数据返回！")
+            return handler
+            
+        }
         
         if (response?.value as! Dictionary<String, Any>)["result"] is NSNull {
             

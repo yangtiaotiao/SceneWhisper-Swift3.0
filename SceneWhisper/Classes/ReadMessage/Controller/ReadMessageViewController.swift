@@ -78,6 +78,9 @@ class ReadMessageViewController: UIViewController {
         checkMessageLabel.layer.borderWidth = 1.0
         checkMessageLabel.layer.cornerRadius = 2.5
         
+        // 禁止textview输入
+        messageDescribeTextView.isEditable = false
+        
         let nib = UINib.init(nibName: "SWPhotoCell", bundle: nil)
         photoCollectionView.register(nib, forCellWithReuseIdentifier: "SWPhotoCell")
         // 请求数据

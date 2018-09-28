@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import SDWebImage
 import IQKeyboardManagerSwift
+import SVProgressHUD
 
 //密信的可读状态
 enum MessageCanReadStatus: Int {
@@ -368,6 +369,19 @@ class SWMessagesViewController: UIViewController {
        
         mapView.setRegion(region, animated: true)
     }
+    
+    //MARK:删除密信回调
+    func deleteMessageHandler(_ result: HSSuccessResponse?, error: HSErrorResponse?) {
+      
+        if error != nil {
+            SVProgressHUD.showError(withStatus: "\(String(describing: error?.errorMessage))")
+        } else {
+            // 成功重新请求数据
+            SVProgressHUD.showSuccess(withStatus: "删除成功")
+            self.requstData()
+        }
+      
+    }
 }
 // MARK: tableview 数据源
 extension SWMessagesViewController: UITableViewDataSource {
@@ -404,20 +418,46 @@ extension SWMessagesViewController: UITableViewDelegate {
 extension SWMessagesViewController: SWMessageDialogViewDelegate {
     func selectFunction(_ view: SWMessageDialogView, messageHandler handleType: Int) {
         switch handleType {
-        case 0:
+        case 0: // 查看详情
+            view.removeFromSuperview()
             let letterVC = SecretLetterViewController.initViewController()
             letterVC.messageInfoModel = view.messageInfoModel
             letterVC.userCenter = userCenter
             letterVC.needPodHoom = false
             self.navigationController?.pushViewController(letterVC, animated: true)
            
-        case 1:
+        case 1: // 追踪
             view.removeFromSuperview()
             
-        case 2:
+            
+            
+        case 2: // 删除
+            
+            let alertController = UIAlertController(title: "温馨提示", message: "是否确定删除此条密语？", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "确定", style: .destructive) { (action) in
+                
+                let parameters = ["messageId":view.messageInfoModel?.messageId,
+                                  ] as! [String:Int]
+                
+                SWRequestManager.deleteMessage(parameters) {[weak self] (result, error) in
+                    guard let strongSelf = self else { return }
+                    strongSelf.deleteMessageHandler(result, error: error)
+                }
+                
+            }
+            let cancelAction = UIAlertAction(title: "取消", style: .cancel) { (action) in
+                
+            }
+            
+            alertController.addAction(cancelAction)
+            alertController.addAction(okAction)
+            
+            self.present(alertController, animated: true) {
+                
+            }
             view.removeFromSuperview()
             
-        case 3:
+        case 3: // 取消
             view.removeFromSuperview()
             
         default:
