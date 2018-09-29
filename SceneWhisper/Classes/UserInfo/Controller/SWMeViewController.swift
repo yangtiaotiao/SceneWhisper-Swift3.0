@@ -18,7 +18,8 @@ class SWMeViewController: UIViewController {
     
     fileprivate var circleCente: CGPoint! // 椭圆中心
     
-    @IBOutlet var doneLabel: UILabel!
+ 
+    @IBOutlet var doneButton: UIButton!
     var infoEditType: Int = 0 //0:头像，1:签名，2:性别 3:名字
     var avatarImage: UIImage? //临时头像
     var infoMenuViewOriginalY: CGFloat = 0.0 //信息菜单的原始位置Y
@@ -49,9 +50,10 @@ class SWMeViewController: UIViewController {
         super.viewDidLoad()
         
         //设置完成按钮
-        doneLabel.layer.borderColor = UIColor.white.cgColor
-        doneLabel.layer.borderWidth = 1.0
-        doneLabel.layer.cornerRadius = 2.5
+        doneButton.layer.cornerRadius = 2
+        doneButton.layer.borderWidth = 1
+        doneButton.layer.borderColor = UIColor.white.cgColor
+        doneButton.isEnabled = false
         
         // 椭圆中心
         circleCente = CGPoint(x: 150*KScaleW, y: 45*KScaleW)
@@ -294,6 +296,7 @@ class SWMeViewController: UIViewController {
     }
     //MARK:更新用户信息请求 - 完成
     @IBAction func doneButtonDidClick(_ sender: UIButton) {
+        self.doneButton.isEnabled = false
         self.view.endEditing(true)
         /*
          userId 用户 Id Long
@@ -302,7 +305,6 @@ class SWMeViewController: UIViewController {
          signature 签名图片 file-没有修改时不传参数
          photo 头像图片 file-没有修改时不传参数
          */
-        userName = userNameText.text
         let parameters = ["userId":SWDataManager.currentUserId(),
                           "nickName":userName ?? "",
                           "genders":genders,
@@ -371,6 +373,7 @@ extension SWMeViewController: SWUserInfoPickerViewDelegate {
             genders = 1
             infoFunctionButton.setBackgroundImage(UIImage(named:"w女"), for: .normal)
         }
+        self.doneButton.isEnabled = true
     }
     
     func pickerView(_ view: SWUserInfoPickerView, didSelectedAvatarAtIndex index: Int) {
@@ -395,7 +398,7 @@ extension SWMeViewController: UIImagePickerControllerDelegate {
         //        avatarImage = image as? UIImage
         self.perform(#selector(saveAvatarImage(_:)), with: image, afterDelay: 0.5)
         picker.dismiss(animated: true, completion: nil)
-
+        self.doneButton.isEnabled = true
     }
 }
 
@@ -414,10 +417,18 @@ extension SWMeViewController: SWSignatureBoardViewDelegate {
         if image != nil {
             signatureImage = image
             infoFunctionButton.setBackgroundImage(image, for: .normal)
-
+            self.doneButton.isEnabled = true
         }
     }
     
 }
+//MARK: textFieldDelegate
 
-
+extension SWMeViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.text != userName {
+            userName = textField.text
+            self.doneButton.isEnabled = true
+        }
+    }
+}

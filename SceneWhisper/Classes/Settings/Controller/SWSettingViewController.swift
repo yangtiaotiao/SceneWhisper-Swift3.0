@@ -110,10 +110,9 @@ extension SWSettingViewController: UITableViewDelegate {
             print("修改登录密码")
             let viewController = SWModifyPasswordViewController.initViewController()
             self.navigationController?.pushViewController(viewController, animated: true)
-//            self.present(viewController, animated: true, completion: nil)
         } else if indexPath == IndexPath.init(row: 0, section: 1) {
             print("去评分")
-            let appStoreUrl = URL(string: "https://itunes.apple.com/cn/app")
+            let appStoreUrl = URL(string: "https://itunes.apple.com/cn/app/%E6%83%85%E6%99%AF%E7%A7%81%E8%AF%AD/id1412772097?mt=8")
             if #available(iOS 10.0, *) {
                 UIApplication.shared.open(appStoreUrl!, options: [:], completionHandler: { (success) in
                     
