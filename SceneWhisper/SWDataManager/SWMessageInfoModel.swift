@@ -136,10 +136,10 @@ class SWMessageInfoModel: NSObject {
             model.userPhoto = data["userPhoto"] as! String
         }
         
-        if data["userGender"] == nil || data["userGender"] is NSNull {
+        if data["userGenders"] == nil || data["userGenders"] is NSNull {
             model.userGender = -1
         } else {
-            model.userGender = Int(String(format: "%@", arguments: [data["userGender"] as! CVarArg]))!
+            model.userGender = Int(String(format: "%@", arguments: [data["userGenders"] as! CVarArg]))!
         }
         
         if data["attachmentTypeId"] == nil || data["attachmentTypeId"] is NSNull {
@@ -506,8 +506,4 @@ class SWMessageInfoModel: NSObject {
         return model
     }
 }
-
-
-
-
 

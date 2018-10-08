@@ -382,6 +382,70 @@ class SWMessagesViewController: UIViewController {
         }
       
     }
+    //跳转到第三方地图 APP
+    func toMapApps(vc: UIViewController, latitude: Double?, longitude: Double?, destName: String?) {
+        guard let lati = latitude, let longi = longitude else {
+            SVProgressHUD.showInfo(withStatus: "未获取到目的地经纬度")
+            return
+        }
+        let destinationName = destName ?? ""
+        let actionSheet = UIAlertController(title: "请选择地图", message: nil, preferredStyle: .actionSheet)
+        //苹果自带高德地图
+        let appleAction = UIAlertAction(title: "苹果地图", style: .default) { (action) in
+            let loc = CLLocationCoordinate2DMake(latitude!, longitude!)
+            let currentLocation = MKMapItem.forCurrentLocation()
+            let toLocation = MKMapItem.init(placemark: MKPlacemark.init(coordinate: loc, addressDictionary: nil))
+            //传入终点名称
+            toLocation.name = destinationName
+            MKMapItem.openMaps(with: [currentLocation, toLocation], launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving, MKLaunchOptionsShowsTrafficKey: NSNumber.init(booleanLiteral: true)])
+        }
+        actionSheet.addAction(appleAction)
+        //utf-8编码
+        var charSet = CharacterSet.urlQueryAllowed
+        charSet.insert(charactersIn: "#")
+        //腾讯地图
+        if UIApplication.shared.canOpenURL(URL(string: "qqmap://")!) {
+            let tencentAction = UIAlertAction(title: "腾讯地图", style: .default) { (action) in
+                let tecentStr = String(format: "qqmap://map/routeplan?from=我的位置&type=drive&tocoord=%f,%f&to=%@&coord_type=&policy=0", lati, longi, destinationName)
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(URL(string: tecentStr.addingPercentEncoding(withAllowedCharacters: charSet)!)!, options: [:], completionHandler: nil)
+                } else {
+                    UIApplication.shared.openURL(URL(string: tecentStr.addingPercentEncoding(withAllowedCharacters: charSet)!)!)
+                }
+                
+            }
+            actionSheet.addAction(tencentAction)
+        }
+        //高德地图
+        if UIApplication.shared.canOpenURL(URL(string: "iosamap://")!) {
+            let gaodeAction = UIAlertAction(title: "高德地图", style: .default) { (action) in
+                let urlStr = String(format: "iosamap://path?sourceApplication= &sid=&dlat=%f&dlon=%f&dname=%@", lati, longi, destinationName)
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(URL(string: urlStr.addingPercentEncoding(withAllowedCharacters: charSet)!)!, options: [:], completionHandler: nil)
+                } else {
+                    UIApplication.shared.openURL(URL(string: urlStr.addingPercentEncoding(withAllowedCharacters: charSet)!)!)
+                }
+            }
+            actionSheet.addAction(gaodeAction)
+        }
+        //百度地图
+        if UIApplication.shared.canOpenURL(URL(string: "baidumap://")!) {
+            let baiduAction = UIAlertAction(title: "百度地图", style: .default) { (action) in
+                let urlStr = String(format: "baidumap://map/direction?origin={{我的位置}}&destination=name:%@|latlng:%f,%f&mode=driving&coord_type=gcj02", destinationName, lati, longi)
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(URL(string: urlStr.addingPercentEncoding(withAllowedCharacters: charSet)!)!, options: [:], completionHandler: nil)
+                    
+                } else {
+                    UIApplication.shared.openURL(URL(string: urlStr.addingPercentEncoding(withAllowedCharacters: charSet)!)!)
+                    
+                }
+            }
+            actionSheet.addAction(baiduAction)
+        }
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        actionSheet.addAction(cancelAction)
+        vc.present(actionSheet, animated: true, completion: nil)
+    }
 }
 // MARK: tableview 数据源
 extension SWMessagesViewController: UITableViewDataSource {
@@ -428,8 +492,7 @@ extension SWMessagesViewController: SWMessageDialogViewDelegate {
            
         case 1: // 追踪
             view.removeFromSuperview()
-            
-            
+            self.toMapApps(vc: self, latitude: Double(view.messageInfoModel?.placeLat ?? ""), longitude: Double(view.messageInfoModel?.placeLng ?? ""), destName: "")
             
         case 2: // 删除
             

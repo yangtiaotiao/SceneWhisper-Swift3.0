@@ -124,8 +124,6 @@ class SWHomeViewController: UIViewController {
     func loadAnnotationImage(with urlStr: String) -> UIImage {
         let imageURL = URL.init(string: SWUrlHeader + urlStr)
         
-//        let  imagedata = NSData(contentsOf: imageURL!)
-        
         guard let imagedata = NSData(contentsOf: imageURL!) else {
              return UIImage.init(named: "im_user_head_default")!
         }
