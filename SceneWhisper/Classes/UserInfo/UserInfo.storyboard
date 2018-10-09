@@ -39,13 +39,16 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lLJ-xr-4Te">
-                                <rect key="frame" x="314" y="32" width="40" height="20"/>
+                                <rect key="frame" x="309" y="32" width="45" height="20"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="Hte-w3-llA"/>
+                                    <constraint firstAttribute="width" constant="45" id="Hte-w3-llA"/>
                                     <constraint firstAttribute="height" constant="20" id="iJN-L0-9Q2"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="保存"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="保存">
+                                    <color key="titleColor" red="0.10588235294117647" green="0.48627450980392156" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <state key="disabled">
                                     <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
                                 </state>
