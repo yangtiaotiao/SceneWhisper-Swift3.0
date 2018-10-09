@@ -74,10 +74,10 @@
 		<string>wtloginmqq</string>
 		<string>wtloginmqq2</string>
 		<string>mqqwpa</string>
-        <string>baidumap</string>
-        <string>iosamap</string>
-        <string>comgooglemaps</string>
-        <string>qqmap</string>
+		<string>baidumap</string>
+		<string>iosamap</string>
+		<string>comgooglemaps</string>
+		<string>qqmap</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

@@ -60,7 +60,7 @@ class SWMessagesViewController: UIViewController {
     var canReadStatus: MessageCanReadStatus = .all
     var alreadyreadStatus: MessageAlreadyReadStatus = .all
     var secretKeyStatus: MessageSecretKeyStatus = .all
-    var messgeCurrentType: MessageType = .identified
+    var messgeCurrentType: MessageType = .generated
     
     var searchKey: String = ""
     
@@ -378,6 +378,8 @@ class SWMessagesViewController: UIViewController {
         } else {
             // 成功重新请求数据
             SVProgressHUD.showSuccess(withStatus: "删除成功")
+            // 发送密信增/删通知
+            NotificationCenter.default.post(name: NSNotification.Name("ADDORDELETENEWMESSAGE"), object: self)
             self.requstData()
         }
       

@@ -281,7 +281,6 @@ class SWMessageSettingViewController: UIViewController {
     //MARK:发布图片密信请求
     func uploadImage() {
         guard let userCoordinate = userCenter else {
-//            SVProgressHUD.showError(withStatus: "获取位置信息失败")
             let alert = UIAlertController.init(title: "未获得位置信息，无法使用发布功能", message: "请在iPhone的“设置-隐私-定位服务”中打开", preferredStyle: .alert)
             let alertAction = UIAlertAction.init(title: "知道了", style: .cancel, handler: nil)
             alert .addAction(alertAction)
@@ -346,10 +345,6 @@ class SWMessageSettingViewController: UIViewController {
                             SVProgressHUD.showError(withStatus: handler.error?.errorMessage)
                         }
                     }
-//                    //获取上传进度
-//                    upload.uploadProgress(queue: DispatchQueue.global(qos: .utility)) { progress in
-//                        print("图片上传进度: \(progress.fractionCompleted)")
-//                    }
                 case .failure(let encodingError):
                     //失败原因
                     SVProgressHUD.dismiss()
@@ -362,7 +357,6 @@ class SWMessageSettingViewController: UIViewController {
     func uploadVideo(mp4Path : URL) {
  
         guard let userCoordinate = userCenter else {
-//            SVProgressHUD.showError(withStatus: "获取位置信息失败")
             let alert = UIAlertController.init(title: "未获得位置信息", message: "请在iPhone的“设置-隐私-定位服务”中打开", preferredStyle: .alert)
             let alertAction = UIAlertAction.init(title: "知道了", style: .cancel, handler: nil)
             alert .addAction(alertAction)
@@ -430,10 +424,7 @@ class SWMessageSettingViewController: UIViewController {
                         }
                        
                     }
-//                    //获取上传进度
-//                    upload.uploadProgress(queue: DispatchQueue.global(qos: .utility)) { progress in
-//                        print("图片上传进度: \(progress.fractionCompleted)")
-//                    }
+
                 case .failure(let encodingError):
                     //失败原因
                     SVProgressHUD.dismiss()
@@ -445,8 +436,11 @@ class SWMessageSettingViewController: UIViewController {
     //发布信息请求结果处理
     func addNewMessageHandler(_ result: HSSuccessResponse?) {
         
-        let str = String.init(format: "%@", result?.data as! CVarArg)
+        // 发送密信增/删通知
+        NotificationCenter.default.post(name: NSNotification.Name("ADDORDELETENEWMESSAGE"), object: self)
         
+        // 展示密信卡
+        let str = String.init(format: "%@", result?.data as! CVarArg)
         let messageInfoModel = SWMessageInfoModel.init()
         messageInfoModel.messageId = NSInteger(str)!
         

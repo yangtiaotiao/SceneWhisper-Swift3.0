@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -616,10 +619,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kjY-pi-D3D">
-                                        <rect key="frame" x="61.5" y="234" width="176" height="29.5"/>
+                                        <rect key="frame" x="61.5" y="233.5" width="176" height="30"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SL密语" translatesAutoresizingMaskIntoConstraints="NO" id="z9l-wX-VpX">
-                                                <rect key="frame" x="0.0" y="0.0" width="176" height="29.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="176" height="30"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我在这里藏了个密语，就等你找出来" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PdA-1D-J1a">
                                                 <rect key="frame" x="22.5" y="5" width="131" height="10"/>
@@ -1045,7 +1048,7 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UTk-K1-OJQ">
                                 <rect key="frame" x="9" y="131" width="302" height="310.5"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="列表_已识别" translatesAutoresizingMaskIntoConstraints="NO" id="CNY-jZ-RjR">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="列表_已生成" translatesAutoresizingMaskIntoConstraints="NO" id="CNY-jZ-RjR">
                                         <rect key="frame" x="0.0" y="0.0" width="302" height="310.5"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hS2-fI-iXp">
@@ -1354,7 +1357,7 @@
         <image name="icon---Location-Pin" width="6" height="11"/>
         <image name="icon---Time" width="9" height="9"/>
         <image name="全屏" width="31" height="31"/>
-        <image name="列表_已识别" width="364" height="373"/>
+        <image name="列表_已生成" width="364" height="373"/>
         <image name="头像" width="42" height="42"/>
         <image name="我的记忆" width="87" height="16"/>
         <image name="熊_已生成" width="356" height="356"/>

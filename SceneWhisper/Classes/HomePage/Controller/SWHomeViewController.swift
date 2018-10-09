@@ -69,6 +69,8 @@ class SWHomeViewController: UIViewController {
         //头像
         avatarImageView.layer.masksToBounds = true
         avatarImageView.layer.cornerRadius = avatarImageView.frame.width / 2.0
+        // 注册密信增/删通知
+        NotificationCenter.default.addObserver(self, selector: #selector(requestData), name: NSNotification.Name(rawValue:"ADDORDELETENEWMESSAGE"), object: nil)
         
     }
     
@@ -84,7 +86,6 @@ class SWHomeViewController: UIViewController {
         userInfoModel = SWDataManager.manager.currentUserInfo() as SWUserInfoModel
         //头像
         avatarImageView.sd_setImage(with: URL(string: (SWUrlHeader + userInfoModel.photo)), placeholderImage: UIImage(named: "im_user_head_default"))
-        
     }
   
     override func viewWillDisappear(_ animated: Bool) {
@@ -93,33 +94,11 @@ class SWHomeViewController: UIViewController {
         
         SVProgressHUD.dismiss()
     }
-    
-    //发现信息请求结果处理
-    func discoveryMessageHandler(_ result: HSSuccessResponse?, error: HSErrorResponse?) {
-        
-        if error != nil {
-            SVProgressHUD.showError(withStatus: (String(describing: error?.errorMessage!)))
-        } else {
-            let data: Array<Dictionary<String, Any>> = result?.data as! Array<Dictionary<String, Any>>
-            if data.count != 0 {
-                for i in 0..<data.count {
-                    let messageModel = SWMessageInfoModel().discoveryMessageData(data[i])
-                    self.messagesList.add(messageModel)
-                    let pinAnnotation = SWMapAnnotation()
-                    pinAnnotation.coordinate = CLLocationCoordinate2D(latitude: Double(messageModel.placeLat)!, longitude: Double(messageModel.placeLng)!)
-                    pinAnnotation.userGender = messageModel.userGender
-                    pinAnnotation.tag = 100 + i
-        
-                    // 用户头像
-                    let image = self.loadAnnotationImage(with: messageModel.userPhoto)
-                    homeAannoImages.append(image)
-                    mapView.addAnnotation(pinAnnotation)
-                }
-                
-            }
-            
-        }
+    deinit {
+        /// 移除通知
+        NotificationCenter.default.removeObserver(self)
     }
+   
     //MARK:加载annotationVIew的图片
     func loadAnnotationImage(with urlStr: String) -> UIImage {
         let imageURL = URL.init(string: SWUrlHeader + urlStr)
@@ -208,6 +187,43 @@ class SWHomeViewController: UIViewController {
             self.bottomAddressView.changeAddress(address)
         }
     }
+    //MARK: 发现信息请求
+    func requestData() {
+        
+        let parameters = ["lng": NSString(format: "%lf", (userLastLocation?.coordinate.longitude)!),
+                          "lat": NSString(format: "%lf", (userLastLocation?.coordinate.latitude)!),
+                          "scope": 1000] as [String : Any]
+        SWRequestManager.discoveryMessage(parameters) {[weak self] (result, error) in
+            guard let strongSelf = self else { return }
+            strongSelf.discoveryMessageHandler(result, error: error)
+        }
+    }
+    //发现信息请求结果处理
+    func discoveryMessageHandler(_ result: HSSuccessResponse?, error: HSErrorResponse?) {
+        
+        if error != nil {
+            SVProgressHUD.showError(withStatus: (String(describing: error?.errorMessage!)))
+        } else {
+            let data: Array<Dictionary<String, Any>> = result?.data as! Array<Dictionary<String, Any>>
+            if data.count != 0 {
+                for i in 0..<data.count {
+                    let messageModel = SWMessageInfoModel().discoveryMessageData(data[i])
+                    self.messagesList.add(messageModel)
+                    let pinAnnotation = SWMapAnnotation()
+                    pinAnnotation.coordinate = CLLocationCoordinate2D(latitude: Double(messageModel.placeLat)!, longitude: Double(messageModel.placeLng)!)
+                    pinAnnotation.userGender = messageModel.userGender
+                    pinAnnotation.tag = 100 + i
+                    
+                    // 用户头像
+                    let image = self.loadAnnotationImage(with: messageModel.userPhoto)
+                    homeAannoImages.append(image)
+                    mapView.addAnnotation(pinAnnotation)
+                }
+                
+            }
+            
+        }
+    }
 }
 
 //MARK: MKMapView Delegate 扩展
@@ -235,14 +251,8 @@ extension SWHomeViewController: MKMapViewDelegate {
         // 位置改变范围大于100米，重新请求数据
         if (userLocation.location?.distance(from: userLastLocation!))! > 100.00 {
             userLastLocation = userLocation.location!
-            //MARK:定位完成发送 —— 发现信息请求
-            let parameters = ["lng": NSString(format: "%lf", userLocation.coordinate.longitude),
-                              "lat": NSString(format: "%lf", userLocation.coordinate.latitude),
-                              "scope": 1000] as [String : Any]
-            SWRequestManager.discoveryMessage(parameters) {[weak self] (result, error) in
-                guard let strongSelf = self else { return }
-                strongSelf.discoveryMessageHandler(result, error: error)
-            }
+            // 定位完成,发现信息请求
+            self.requestData()
         }
         
     }
