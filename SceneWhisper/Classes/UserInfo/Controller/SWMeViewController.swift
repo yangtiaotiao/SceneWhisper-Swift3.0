@@ -197,7 +197,11 @@ class SWMeViewController: UIViewController {
             
             UIView.animate(withDuration: 0.2, animations: { [weak self] in
                 guard let strongSelf = self else { return }
-                strongSelf.infoMenuView.frame.origin.y = UIScreen.main.bounds.height - 270.0 - strongSelf.infoMenuView.frame.height
+                if #available(iOS 11.0, *) {
+                    strongSelf.infoMenuView.frame.origin.y = UIScreen.main.bounds.height - 270.0 - strongSelf.infoMenuView.frame.height - (strongSelf.view.window?.safeAreaInsets.bottom)!
+                } else {
+                    strongSelf.infoMenuView.frame.origin.y = UIScreen.main.bounds.height - 270.0 - strongSelf.infoMenuView.frame.height
+                }
             })
         } else if infoEditType == 2 { // 性别
             showInfoPickerView(1)

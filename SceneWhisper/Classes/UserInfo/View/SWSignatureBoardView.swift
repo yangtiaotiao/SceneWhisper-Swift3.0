@@ -97,7 +97,11 @@ class SWSignatureBoardView: UIView {
         view.window?.addSubview(self)
         UIView.animate(withDuration: 0.2, animations: {[weak self] in
             guard let strongSelf = self else { return }
-            strongSelf.contentView?.frame.origin.y = strongSelf.frame.height - 260.0
+            if #available(iOS 11.0, *) {
+                strongSelf.contentView?.frame.origin.y = strongSelf.frame.height - 260.0 - (view.window?.safeAreaInsets.bottom)!
+            } else {
+                strongSelf.contentView?.frame.origin.y = strongSelf.frame.height - 260.0
+            }
         }) { (finished) in
             
         }

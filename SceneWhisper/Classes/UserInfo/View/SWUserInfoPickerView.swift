@@ -51,7 +51,11 @@ class SWUserInfoPickerView: UIView {
         
         UIView.animate(withDuration: 0.2, animations: {[weak self] in
             guard let strongSelf = self else { return }
-            strongSelf.mainView?.frame.origin.y = strongSelf.frame.height - 140.0
+            if #available(iOS 11.0, *) {
+                strongSelf.mainView?.frame.origin.y = strongSelf.frame.height - 140.0 - (view.window?.safeAreaInsets.bottom)!
+            } else {
+                strongSelf.mainView?.frame.origin.y = strongSelf.frame.height - 140.0
+            }
         }) { (finished) in
             
         }
