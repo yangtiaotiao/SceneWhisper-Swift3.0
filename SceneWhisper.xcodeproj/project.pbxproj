@@ -487,6 +487,7 @@
 		D1233FD2202C39BF0039083A /* AddMessage */ = {
 			isa = PBXGroup;
 			children = (
+				9C5DDE941F6BE6DD001A1868 /* video */,
 				D163804620B9AEE400A21152 /* KJCamera */,
 				D1233FEB202C3A1C0039083A /* AddMessage.storyboard */,
 				D1233FD3202C39BF0039083A /* Controller */,
@@ -511,7 +512,6 @@
 			isa = PBXGroup;
 			children = (
 				9C9456FE1F41C0B100693AA5 /* SWCustomSliderView.swift */,
-				9C5DDE941F6BE6DD001A1868 /* video */,
 				D162A9C02073D20B00D8289B /* ZZCircleProgress */,
 				9C87293F1F629315001DAFE7 /* SWSecretKeySwitch.swift */,
 				9C5DDEBD1F6E2867001A1868 /* SWDateRangeView.swift */,

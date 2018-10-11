@@ -54,7 +54,13 @@
 - (void)buildNavUI {
     UIImageView *imageView = [[UIImageView alloc] init];
     imageView.image = [UIImage imageNamed:@"video_play_nav_bg"];
-    imageView.frame = CGRectMake(0, 0, kScreenWidth, 44);
+    
+    if (@available(iOS 11.0, *)) {
+        UIEdgeInsets inset = [UIApplication sharedApplication].keyWindow.safeAreaInsets;
+         imageView.frame = CGRectMake(0, inset.top, kScreenWidth, 44);
+    } else {
+         imageView.frame = CGRectMake(0, 0, kScreenWidth, 44);
+    }
     imageView.userInteractionEnabled = YES;
     
     UIButton *cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -87,8 +93,6 @@
     
     [self.view.layer addSublayer:playerLayer];
     
-    
-
     [player play];
     self.player = player;
     

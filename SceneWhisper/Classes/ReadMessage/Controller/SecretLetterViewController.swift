@@ -100,7 +100,6 @@ class SecretLetterViewController: UIViewController {
          lat 用户所在位置纬度 String
          **/
         guard let userCoordinate = userCenter else {
-//            SVProgressHUD.showError(withStatus: "获取位置信息失败")
             let alert = UIAlertController.init(title: "未获得位置信息", message: "请在iPhone的“设置-隐私-定位服务”中打开", preferredStyle: .alert)
             let alertAction = UIAlertAction.init(title: "知道了", style: .cancel, handler: nil)
             alert .addAction(alertAction)
@@ -191,7 +190,10 @@ class SecretLetterViewController: UIViewController {
     //保存相册完成相关的方法
     func image(image:UIImage,didFinishSavingWithError error:NSError?,contextInfo:AnyObject) {
         if error != nil {
-            SVProgressHUD.showInfo(withStatus: "密信片保存失败")
+            let alert = UIAlertController.init(title: "为获得照片授权", message: "请在iPhone的“设置-隐私-照片”中打开", preferredStyle: .alert)
+            let alertAction = UIAlertAction.init(title: "知道了", style: .cancel, handler: nil)
+            alert .addAction(alertAction)
+            self.present(alert, animated: true, completion: nil)
         } else {
             SVProgressHUD.showSuccess(withStatus: "密信片保存成功")
         }

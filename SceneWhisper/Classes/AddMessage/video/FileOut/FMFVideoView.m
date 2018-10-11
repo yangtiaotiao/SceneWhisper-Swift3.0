@@ -8,6 +8,7 @@
 //  Github:https://github.com/suifengqjn
 //  blog:http://gcblog.github.io/
 //  简书:http://www.jianshu.com/u/527ecf8c8753
+
 #import "FMFVideoView.h"
 #import "FMRecordProgressView.h"
 
@@ -47,7 +48,13 @@
     self.fmodel.delegate = self;
     
     self.topView = [[UIView alloc] init];
-    self.topView.frame = CGRectMake(0, 0, kScreenWidth, 44);
+    if (@available(iOS 11.0, *)) {
+        UIEdgeInsets inset = [UIApplication sharedApplication].keyWindow.safeAreaInsets;
+        self.topView.frame = CGRectMake(0, inset.top, kScreenWidth, 44);
+    } else {
+        self.topView.frame = CGRectMake(0, 0, kScreenWidth, 44);
+    }
+    
     [self addSubview:self.topView];
     // 返回按钮
     self.cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
