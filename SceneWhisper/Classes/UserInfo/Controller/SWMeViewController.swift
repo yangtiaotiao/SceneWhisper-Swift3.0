@@ -16,7 +16,7 @@ import SVProgressHUD
 
 class SWMeViewController: UIViewController {
     
-    fileprivate var circleCente: CGPoint! // 椭圆中心
+    fileprivate var circleCenter: CGPoint! // 椭圆中心
     
  
     @IBOutlet var doneButton: UIButton!
@@ -56,7 +56,7 @@ class SWMeViewController: UIViewController {
         doneButton.isEnabled = false
         
         // 椭圆中心
-        circleCente = CGPoint(x: 150*KScaleW, y: 45*KScaleW)
+        circleCenter = CGPoint(x: 150*KScaleW, y: 45*KScaleW)
         
         //获取用户信息
         userInfoModel = SWDataManager.manager.currentUserInfo()
@@ -100,20 +100,20 @@ class SWMeViewController: UIViewController {
     @IBAction func functionButtonDidClicked(_ sender: UIButton) {
         
         var scale:CGFloat
-        if (sender.center.x > circleCente.x + 10.0) {
-            scale = 3
-        } else if (sender.center.y > circleCente.y + 10.0) {
-            scale = 2
-        } else if (sender.center.x < circleCente.x - 20.0) {
-            scale = 1
+        if (sender.center.x > circleCenter.x + 10.0) {
+            scale = 3.0
+        } else if (sender.center.y > circleCenter.y + 10.0) {
+            scale = 2.0
+        } else if (sender.center.x < circleCenter.x - 20.0) {
+            scale = 1.0
         } else {
-            scale = 0
+            scale = 0.0
         }
         
-        sexButton.createCircleAnimation(withCircleCenter: circleCente, offset: scale)//性别按钮1303
-        avatrarButton.createCircleAnimation(withCircleCenter: circleCente, offset: scale)//头像按钮1302
-        signatureButton.createCircleAnimation(withCircleCenter: circleCente, offset: scale)//签名按钮1301
-        userNameButton.createCircleAnimation(withCircleCenter: circleCente, offset: scale)// 用户名1304
+        sexButton.createCircleAnimation(withCircleCenter: circleCenter, offset: scale)//性别按钮1303
+        avatrarButton.createCircleAnimation(withCircleCenter: circleCenter, offset: scale)//头像按钮1302
+        signatureButton.createCircleAnimation(withCircleCenter: circleCenter, offset: scale)//签名按钮1301
+        userNameButton.createCircleAnimation(withCircleCenter: circleCenter, offset: scale)// 用户名1304
         switch sender.tag {
         case 1301:
             self.signatButtonDidClicked(sender)

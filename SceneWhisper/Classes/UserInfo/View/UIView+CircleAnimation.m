@@ -51,8 +51,7 @@
         startAngle = 3;
     }
     endAngle = startAngle + offset;
-    
-    
+
     NSInteger index = endAngle >= 4 ? endAngle - 4 : endAngle;
     
     NSValue *tmpValue = array[index];
@@ -83,7 +82,6 @@
     //设置运转的动画
     [self.layer addAnimation:pathAnimation forKey:@"moveTheCircleOne"];
     
-   
 }
 
 @end
