@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -499,10 +496,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dlX-6s-tNu">
-                                        <rect key="frame" x="58.5" y="86.5" width="76.5" height="85.5"/>
+                                        <rect key="frame" x="58.5" y="87" width="76.5" height="85"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SL二维码" translatesAutoresizingMaskIntoConstraints="NO" id="Zzn-CN-KLs">
-                                                <rect key="frame" x="-6.5" y="-4.5" width="90" height="94.5"/>
+                                                <rect key="frame" x="-6.5" y="-5" width="90" height="94.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Zzn-CN-KLs" secondAttribute="height" multiplier="20:21" id="ZvS-nG-Dq2"/>
                                                     <constraint firstAttribute="width" constant="90" id="wyU-r6-UJR"/>
@@ -526,21 +523,21 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TQP-86-bch">
-                                        <rect key="frame" x="45" y="174" width="209" height="1"/>
+                                        <rect key="frame" x="45" y="174" width="209" height="0.5"/>
                                         <color key="backgroundColor" red="0.51764705882352935" green="0.52156862745098043" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="XN1-Fc-pfe"/>
+                                            <constraint firstAttribute="height" constant="0.5" id="XN1-Fc-pfe"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KT0-bK-kj7">
-                                        <rect key="frame" x="140" y="91.5" width="1" height="75.5"/>
+                                        <rect key="frame" x="140" y="92" width="0.5" height="75"/>
                                         <color key="backgroundColor" red="0.51764705879999995" green="0.52156862749999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="1" id="Qe3-Zd-Urc"/>
+                                            <constraint firstAttribute="width" constant="0.5" id="Qe3-Zd-Urc"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xf9-N0-vUP">
-                                        <rect key="frame" x="151" y="86.5" width="132" height="85.5"/>
+                                        <rect key="frame" x="150.5" y="87" width="132" height="85"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SL签名装饰" translatesAutoresizingMaskIntoConstraints="NO" id="M91-1c-Vyn">
                                                 <rect key="frame" x="0.0" y="25.5" width="132" height="34"/>
@@ -552,13 +549,13 @@
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wOB-Oi-YsO">
-                                                <rect key="frame" x="27" y="23" width="39" height="39.5"/>
+                                                <rect key="frame" x="27" y="23" width="39" height="39"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="wOB-Oi-YsO" secondAttribute="height" multiplier="1:1" id="QYR-jJ-j0F"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016年8月15日 15:25" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDO-au-hjX">
-                                                <rect key="frame" x="49" y="75.5" width="83" height="10"/>
+                                                <rect key="frame" x="49" y="75" width="83" height="10"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="8"/>
                                                 <color key="textColor" red="0.36078431372549019" green="0.14509803921568626" blue="0.015686274509803921" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -619,10 +616,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kjY-pi-D3D">
-                                        <rect key="frame" x="61.5" y="233.5" width="176" height="30"/>
+                                        <rect key="frame" x="61.5" y="234" width="176" height="29.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SL密语" translatesAutoresizingMaskIntoConstraints="NO" id="z9l-wX-VpX">
-                                                <rect key="frame" x="0.0" y="0.0" width="176" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="176" height="29.5"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我在这里藏了个密语，就等你找出来" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PdA-1D-J1a">
                                                 <rect key="frame" x="22.5" y="5" width="131" height="10"/>
@@ -674,47 +671,119 @@
                                     <constraint firstItem="X3A-h9-R3s" firstAttribute="centerY" secondItem="x1g-lj-bRA" secondAttribute="centerY" multiplier="10:7" id="z5D-LB-Mky"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ygR-jU-DSu">
+                            <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ygR-jU-DSu">
                                 <rect key="frame" x="0.0" y="386" width="320" height="109"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SL浏览BG" translatesAutoresizingMaskIntoConstraints="NO" id="TJV-ze-fva">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SL浏览BG" translatesAutoresizingMaskIntoConstraints="NO" id="TJV-ze-fva">
                                         <rect key="frame" x="0.0" y="36" width="320" height="73"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="73" id="Iph-Bj-Qwr"/>
+                                        </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="最近读取记录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ZD-qo-cUc">
-                                        <rect key="frame" x="8" y="8" width="98" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最近读取记录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ZD-qo-cUc">
+                                        <rect key="frame" x="8" y="11" width="92" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="0.8666666666666667" green="0.7803921568627451" blue="0.51764705882352935" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JwF-Ia-fcF">
-                                        <rect key="frame" x="328" y="57" width="0.0" height="30"/>
+                                    <button hidden="YES" opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JwF-Ia-fcF">
+                                        <rect key="frame" x="289" y="57" width="23" height="30"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <state key="normal" image="SL更多"/>
                                         <connections>
                                             <action selector="moreReaderButtonClicked:" destination="mXP-qk-pwf" eventType="touchUpInside" id="wI3-DX-ElJ"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SL人icon" translatesAutoresizingMaskIntoConstraints="NO" id="y3g-Jn-YaZ">
-                                        <rect key="frame" x="310" y="12" width="7" height="16"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="剩余: 10/50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nyc-4p-P0w">
-                                        <rect key="frame" x="320" y="10" width="50" height="21"/>
-                                        <autoresizingMask key="autoresizingMask"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="剩余: 10/50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nyc-4p-P0w">
+                                        <rect key="frame" x="258" y="10" width="60" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="RU5-lx-178"/>
+                                            <constraint firstAttribute="height" constant="21" id="yFi-Ie-BSV"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jez-hB-zMR">
-                                        <rect key="frame" x="0.0" y="36" width="329" height="73"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </scrollView>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nvK-dZ-2D1">
+                                        <rect key="frame" x="0.0" y="36" width="320" height="73"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="YlY-Q5-B2O">
+                                            <size key="itemSize" width="60" height="73"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="resentReadCell" id="0Tg-CD-8uA" customClass="SWResentReadCell" customModule="SceneWhisper" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="73"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="60" height="73"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SL头像1" translatesAutoresizingMaskIntoConstraints="NO" id="2gS-SB-2Ot">
+                                                            <rect key="frame" x="5" y="5" width="50" height="50"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="50" id="ffx-MP-ldA"/>
+                                                                <constraint firstAttribute="width" secondItem="2gS-SB-2Ot" secondAttribute="height" multiplier="1:1" id="nil-Mo-e1C"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="称昵" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fE6-RE-lPE">
+                                                            <rect key="frame" x="2" y="60" width="56" height="9"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="7"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SL男性" translatesAutoresizingMaskIntoConstraints="NO" id="6SV-7P-w2z">
+                                                            <rect key="frame" x="38" y="45" width="10" height="10"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="6SV-7P-w2z" secondAttribute="height" multiplier="1:1" id="J6j-9J-YiQ"/>
+                                                                <constraint firstAttribute="width" constant="10" id="QX9-Mi-iAP"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                </view>
+                                                <constraints>
+                                                    <constraint firstItem="fE6-RE-lPE" firstAttribute="leading" secondItem="0Tg-CD-8uA" secondAttribute="leading" constant="2" id="6DB-0c-M1l"/>
+                                                    <constraint firstItem="6SV-7P-w2z" firstAttribute="centerY" secondItem="2gS-SB-2Ot" secondAttribute="centerY" multiplier="5:3" id="6dS-ax-baC"/>
+                                                    <constraint firstItem="fE6-RE-lPE" firstAttribute="centerX" secondItem="2gS-SB-2Ot" secondAttribute="centerX" id="MLM-RE-RnW"/>
+                                                    <constraint firstItem="6SV-7P-w2z" firstAttribute="centerX" secondItem="2gS-SB-2Ot" secondAttribute="centerX" multiplier="5:3.5" id="MTI-4d-lxk"/>
+                                                    <constraint firstItem="2gS-SB-2Ot" firstAttribute="centerX" secondItem="0Tg-CD-8uA" secondAttribute="centerX" id="cFJ-o0-XS3"/>
+                                                    <constraint firstItem="fE6-RE-lPE" firstAttribute="top" secondItem="2gS-SB-2Ot" secondAttribute="bottom" constant="5" id="vOr-3r-suJ"/>
+                                                    <constraint firstItem="2gS-SB-2Ot" firstAttribute="top" secondItem="0Tg-CD-8uA" secondAttribute="top" constant="5" id="yCU-qb-ZrA"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="genderImage" destination="6SV-7P-w2z" id="jd6-kS-5Sj"/>
+                                                    <outlet property="nameLabel" destination="fE6-RE-lPE" id="hpk-Ft-RUB"/>
+                                                    <outlet property="photoImage" destination="2gS-SB-2Ot" id="SJR-ES-hVX"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="mXP-qk-pwf" id="TgU-Oq-aki"/>
+                                            <outlet property="delegate" destination="mXP-qk-pwf" id="MWm-Oy-vIo"/>
+                                        </connections>
+                                    </collectionView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SL人icon" translatesAutoresizingMaskIntoConstraints="NO" id="y3g-Jn-YaZ">
+                                        <rect key="frame" x="249" y="13" width="7" height="15"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="TJV-ze-fva" secondAttribute="bottom" id="3fb-3J-ft5"/>
+                                    <constraint firstAttribute="trailing" secondItem="TJV-ze-fva" secondAttribute="trailing" id="FAb-1r-uLM"/>
+                                    <constraint firstItem="nvK-dZ-2D1" firstAttribute="width" secondItem="TJV-ze-fva" secondAttribute="width" id="H1u-Vc-Vuc"/>
+                                    <constraint firstItem="TJV-ze-fva" firstAttribute="leading" secondItem="ygR-jU-DSu" secondAttribute="leading" id="M6Y-C7-slj"/>
+                                    <constraint firstItem="TJV-ze-fva" firstAttribute="top" secondItem="nyc-4p-P0w" secondAttribute="bottom" constant="5" id="Ofq-qF-VJE"/>
+                                    <constraint firstItem="y3g-Jn-YaZ" firstAttribute="centerY" secondItem="nyc-4p-P0w" secondAttribute="centerY" id="ajW-AL-yNY"/>
+                                    <constraint firstItem="nvK-dZ-2D1" firstAttribute="height" secondItem="TJV-ze-fva" secondAttribute="height" id="bWv-Cl-8b0"/>
+                                    <constraint firstAttribute="trailing" secondItem="nyc-4p-P0w" secondAttribute="trailing" constant="2" id="eUp-tb-cgC"/>
                                     <constraint firstAttribute="height" constant="109" id="fLw-Rc-eYK"/>
+                                    <constraint firstItem="4ZD-qo-cUc" firstAttribute="leading" secondItem="ygR-jU-DSu" secondAttribute="leading" constant="8" id="fbY-cY-Afa"/>
+                                    <constraint firstItem="nyc-4p-P0w" firstAttribute="leading" secondItem="y3g-Jn-YaZ" secondAttribute="trailing" constant="2" id="fs2-v9-wF8"/>
+                                    <constraint firstItem="TJV-ze-fva" firstAttribute="top" secondItem="4ZD-qo-cUc" secondAttribute="bottom" constant="7" id="l4O-09-7rJ"/>
+                                    <constraint firstItem="nvK-dZ-2D1" firstAttribute="leading" secondItem="TJV-ze-fva" secondAttribute="leading" id="qUg-Od-urR"/>
+                                    <constraint firstItem="nvK-dZ-2D1" firstAttribute="top" secondItem="TJV-ze-fva" secondAttribute="top" id="tBh-E6-U2f"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UWX-sy-1oI">
@@ -763,10 +832,12 @@
                         <outlet property="createTimeLabel" destination="PDO-au-hjX" id="SSD-T6-d0O"/>
                         <outlet property="mainView" destination="x1g-lj-bRA" id="sSP-6m-VGB"/>
                         <outlet property="nickNameMark" destination="YSM-J6-jQs" id="Gxg-Mc-Scf"/>
+                        <outlet property="readCountLab" destination="nyc-4p-P0w" id="I4Q-cf-fxt"/>
                         <outlet property="readCountMark" destination="YHn-Wj-6Pm" id="Mgj-Pz-R9t"/>
                         <outlet property="readRecordingLabel" destination="nyc-4p-P0w" id="IfQ-Bq-09L"/>
                         <outlet property="readSecretMessageLabel" destination="JPc-Vb-sII" id="L3O-4w-cUr"/>
                         <outlet property="readSecretWhisperButton" destination="8w2-IK-H8k" id="cpa-hQ-vL4"/>
+                        <outlet property="resentCollection" destination="nvK-dZ-2D1" id="2xR-8p-TAg"/>
                         <outlet property="signatureBgImage" destination="wOB-Oi-YsO" id="hkr-Ia-N96"/>
                         <outlet property="tearPaperImageView" destination="HEN-df-CLQ" id="W9G-pn-t4R"/>
                         <outlet property="userImage" destination="S9g-3k-kCv" id="T89-CZ-wfy"/>
@@ -779,7 +850,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M4q-5u-4X5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1300" y="1141.9790104947526"/>
+            <point key="canvasLocation" x="1299.375" y="1141.9014084507041"/>
         </scene>
         <!--Message More View Controller-->
         <scene sceneID="H9i-O9-2iE">
@@ -1330,46 +1401,48 @@
         </scene>
     </scenes>
     <resources>
-        <image name="11删除" width="13" height="12"/>
-        <image name="11取消" width="13" height="11"/>
-        <image name="11弹框" width="316" height="460"/>
+        <image name="11删除" width="13.5" height="12.5"/>
+        <image name="11取消" width="13.5" height="11.5"/>
+        <image name="11弹框" width="316" height="460.5"/>
         <image name="11订单跟踪50" width="12" height="13"/>
-        <image name="11详情" width="11" height="11"/>
+        <image name="11详情" width="11.5" height="11.5"/>
         <image name="11透明bg" width="375" height="667"/>
         <image name="BG" width="375" height="667"/>
         <image name="SL_bg" width="375" height="667"/>
-        <image name="SL下载" width="37" height="37"/>
+        <image name="SL下载" width="37.5" height="37"/>
         <image name="SL二维码" width="84" height="84"/>
-        <image name="SL人icon" width="7" height="15"/>
+        <image name="SL人icon" width="7" height="15.5"/>
         <image name="SL位置" width="14" height="17"/>
         <image name="SL分享" width="37" height="37"/>
         <image name="SL圆bg" width="344" height="344"/>
         <image name="SL头像" width="57" height="57"/>
-        <image name="SL密语" width="194" height="31"/>
-        <image name="SL撕纸效果" width="228" height="69"/>
+        <image name="SL头像1" width="47.5" height="47.5"/>
+        <image name="SL密语" width="194.5" height="31.5"/>
+        <image name="SL撕纸效果" width="228.5" height="69.5"/>
         <image name="SL时间" width="17" height="17"/>
-        <image name="SL更多" width="15" height="4"/>
-        <image name="SL标题黄背景" width="188" height="46"/>
-        <image name="SL浏览BG" width="375" height="72"/>
-        <image name="SL签名" width="75" height="73"/>
-        <image name="SL签名装饰" width="153" height="40"/>
+        <image name="SL更多" width="15.5" height="4"/>
+        <image name="SL标题黄背景" width="188" height="46.5"/>
+        <image name="SL浏览BG" width="375" height="72.5"/>
+        <image name="SL男性" width="10" height="10"/>
+        <image name="SL签名" width="75.5" height="73.5"/>
+        <image name="SL签名装饰" width="153.5" height="40.5"/>
         <image name="icon---Attention" width="10" height="10"/>
-        <image name="icon---Location-Pin" width="6" height="11"/>
-        <image name="icon---Time" width="9" height="9"/>
-        <image name="全屏" width="31" height="31"/>
-        <image name="列表_已生成" width="364" height="373"/>
-        <image name="头像" width="42" height="42"/>
-        <image name="我的记忆" width="87" height="16"/>
-        <image name="熊_已生成" width="356" height="356"/>
+        <image name="icon---Location-Pin" width="6.5" height="11.5"/>
+        <image name="icon---Time" width="9.5" height="9.5"/>
+        <image name="全屏" width="31" height="31.5"/>
+        <image name="列表_已生成" width="364" height="373.5"/>
+        <image name="头像" width="42.5" height="42.5"/>
+        <image name="我的记忆" width="87" height="16.5"/>
+        <image name="熊_已生成" width="356.5" height="356.5"/>
         <image name="秘信列表BG" width="375" height="667"/>
         <image name="秘信列表密钥3" width="95" height="96"/>
         <image name="秘信列表已读状态3" width="95" height="96"/>
         <image name="秘信列表更多三横" width="17" height="14"/>
-        <image name="秘信列表更多三点" width="15" height="4"/>
-        <image name="秘信列表未读状态3" width="95" height="95"/>
-        <image name="秘信列表竖线分割" width="3" height="14"/>
+        <image name="秘信列表更多三点" width="15.5" height="4"/>
+        <image name="秘信列表未读状态3" width="95" height="95.5"/>
+        <image name="秘信列表竖线分割" width="3.5" height="14.5"/>
         <image name="秘信列表红头像" width="26" height="26"/>
         <image name="返回" width="9" height="16"/>
-        <image name="音乐" width="31" height="31"/>
+        <image name="音乐" width="31" height="31.5"/>
     </resources>
 </document>

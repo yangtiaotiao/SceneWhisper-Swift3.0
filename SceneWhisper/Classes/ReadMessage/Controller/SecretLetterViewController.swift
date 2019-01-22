@@ -44,10 +44,14 @@ class SecretLetterViewController: UIViewController {
     @IBOutlet var userQrImage: UIImageView!
     @IBOutlet weak var readRecordingLabel: UILabel!
     @IBOutlet weak var readSecretMessageLabel: UILabel!
-    
     /** 签名 */
     @IBOutlet weak var signatureBgImage: UIImageView!
-    
+    /** 最近阅读记录 */
+    @IBOutlet var resentCollection: UICollectionView!
+    /** 阅读次数 */
+    @IBOutlet var readCountLab: UILabel!
+    //附件数组
+    var resentDatas:Array<Dictionary<String,Any>> = []
     //初始化viewController
     class func initViewController() -> SecretLetterViewController {
         return UIStoryboard.init(name: "ReadMessage", bundle: nil).instantiateViewController(withIdentifier: "SecretLetterViewController") as! SecretLetterViewController
@@ -146,10 +150,10 @@ class SecretLetterViewController: UIViewController {
             createTimeLabel.text = "\(messageCardeModel.messageAddTime)"
             
             /** 可读时间 */
-            whisperReadTimeLabel.text = "可读时间:每年的" + messageCardeModel.messageReadStartMonth + "月" + messageCardeModel.messageReadStartDay + "日" + messageCardeModel.messageReadStartTime + "时" + "—>" + messageCardeModel.messageReadEndMonth + "月" + messageCardeModel.messageReadEndDay + "日" + messageCardeModel.messageReadEndTime + "时"
+            whisperReadTimeLabel.text = "可读时间:" + messageCardeModel.messageReadStartMonth + "月" + "-" + messageCardeModel.messageReadEndMonth + "月" + "->" + messageCardeModel.messageReadStartDay + "日" + "-" + messageCardeModel.messageReadEndDay + "日" + "->" + messageCardeModel.messageReadStartTime + "时" + "-" + messageCardeModel.messageReadEndTime + "时"
             
             /** 地址 */
-            whisperReadLocationLabel.text = messageCardeModel.areaName + "-" + messageCardeModel.placeName
+            whisperReadLocationLabel.text = "可读空间:" + messageCardeModel.areaName + "-" + messageCardeModel.placeName
             
             /** 标题 */
             whisperTitleLabel.text = messageCardeModel.messageTitle
@@ -158,6 +162,15 @@ class SecretLetterViewController: UIViewController {
             
             /** 签名 */
             signatureBgImage.sd_setImage(with: URL(string: (SWUrlHeader + messageCardeModel.userSignatureUrl)), placeholderImage: UIImage(named: ""))
+            
+            if messageCardeModel.messageReadTimes == -1 {
+                readCountLab.text = "剩余:" + "\(messageCardeModel.messageReadedTimes)" + "/" + "∞"
+            } else {
+                readCountLab.text = "剩余:" + "\(messageCardeModel.messageReadedTimes)" + "/" + "\(messageCardeModel.messageReadTimes)"
+            }
+            // 最近
+            resentDatas = (messageCardeModel.messageReadUsers as NSArray) as! Array<Dictionary<String, Any>>
+            self.resentCollection.reloadData()
         }
     }
     //页面返回事件处理
@@ -274,4 +287,17 @@ class SecretLetterViewController: UIViewController {
     }
     
 }
-
+//MARK: UICollectionView-数据源
+extension SecretLetterViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return resentDatas.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        //返回Cell内容，这里我们使用刚刚建立的defaultCell作为显示内容
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "resentReadCell", for: indexPath as IndexPath) as! SWResentReadCell
+        cell.readerInfo = resentDatas[indexPath.row]
+        return cell;
+    }
+}

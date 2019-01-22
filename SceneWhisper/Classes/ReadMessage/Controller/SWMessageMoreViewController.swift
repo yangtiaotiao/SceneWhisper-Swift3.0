@@ -76,7 +76,6 @@ class SWMessageMoreViewController: UIViewController {
         let okAction = UIAlertAction(title: "确定", style: .destructive) { (action) in
             
             //删除处理
-            
             self.dismiss(animated: true) { }
             
         }

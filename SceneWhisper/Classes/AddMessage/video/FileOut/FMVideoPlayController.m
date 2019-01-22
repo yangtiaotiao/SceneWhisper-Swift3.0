@@ -47,9 +47,15 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)backAction
-{
-    [self.navigationController popViewControllerAnimated:YES];
+- (void)backAction {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"视频将不会被保存，是否确认退出？" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDestructive handler:nil];
+    [alert addAction:okAction];
+    [alert addAction:cancelAction];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 - (void)buildNavUI {
     UIImageView *imageView = [[UIImageView alloc] init];

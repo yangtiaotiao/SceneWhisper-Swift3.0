@@ -126,7 +126,6 @@ class SWQRCodeViewController: UIViewController,
                 imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
                 imagePicker.delegate = self
                 self.present(imagePicker, animated: true, completion: nil)
-                
             } else if status == PHAuthorizationStatus.denied {
                 // 用户拒绝当前应用访问相册
                 let alertController = UIAlertController(title: "未获得照片授权", message: "请在iPhone的“设置-隐私-照片”中打开", preferredStyle: UIAlertControllerStyle.alert)
@@ -146,6 +145,12 @@ class SWQRCodeViewController: UIViewController,
                 self.present(alertController, animated: true, completion: nil)
                 
             }
+        } else {
+            // 用户允许当前应用访问相册
+            let imagePicker = UIImagePickerController()
+            imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+            imagePicker.delegate = self
+            self.present(imagePicker, animated: true, completion: nil)
         }
     }
     
@@ -181,10 +186,10 @@ class SWQRCodeViewController: UIViewController,
         }
     }
     
-    
     func goQRCodeResultVC(urlstr:String) {
-        if urlstr.hasPrefix("http://www.scenechat.cn/") {
-            let index = urlstr.index(urlstr.endIndex, offsetBy: -2)
+        let str = "http://www.scenechat.cn/scenechat/m/skp/toSkip?messageId="
+        if urlstr.hasPrefix(str) {
+            let index = urlstr.index(urlstr.startIndex, offsetBy: str.count)
             let suffix = urlstr.substring(from: index)
             let messageInfoModel = SWMessageInfoModel.init()
             messageInfoModel.messageId = NSInteger(suffix)!

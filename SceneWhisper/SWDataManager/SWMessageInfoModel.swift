@@ -27,7 +27,8 @@ class SWMessageInfoModel: NSObject {
     var messageReadUsers: Array<Dictionary<String,Any>> = [["userId": 0,
                                                             "userGender": -1,
                                                             "userPhoto": "",
-                                                            "readTime": ""]]
+                                                            "readTime": "",
+                                                            "userName":""]]
     var placeName: String = ""
     var placeId: NSInteger = 0
     var placeLat: String = ""

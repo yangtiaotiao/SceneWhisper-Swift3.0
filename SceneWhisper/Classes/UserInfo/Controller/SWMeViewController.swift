@@ -83,6 +83,9 @@ class SWMeViewController: UIViewController {
         guard  let photoImageURL = URL.init(string: SWUrlHeader + (userInfoModel?.photo)!) else {return ;}
         let photoImagedata = NSData(contentsOf: photoImageURL)!
         avatarImage = UIImage(data: photoImagedata as Data, scale: 1.0)
+        
+        // 监听通知
+        self.registerNotification()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -91,6 +94,45 @@ class SWMeViewController: UIViewController {
             infoFunctionButton.setBackgroundImage(avatarImage!, for: .normal)
         }
     }
+    //MARK:监听键盘通知
+    func registerNotification(){
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyBoardWillShow(_ :)),
+                                               name: NSNotification.Name.UIKeyboardWillShow,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyBoardWillHide(_ :)),
+                                               name: NSNotification.Name.UIKeyboardWillHide,
+                                               object: nil)
+    }
+    //MARK:键盘通知相关操作
+    @objc func keyBoardWillShow(_ notification:Notification){
+        
+        DispatchQueue.main.async {
+            self.view.center.y = KScreenHeight/2
+            let user_info = notification.userInfo
+            let keyboardRect = (user_info?[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+            let y = keyboardRect.origin.y
+            let y2 = self.infoMenuView.frame.maxY
+            let offset_y = y2 - y + 10
+            
+//            UIView.animate(withDuration: 0.25, animations: {
+                self.view.center.y = self.view.center.y - offset_y
+//            })
+        }
+    }
+    
+    @objc func keyBoardWillHide(_ notification:Notification){
+        DispatchQueue.main.async {
+            DispatchQueue.main.async {
+//                UIView.animate(withDuration: 0.25, animations: {
+                    self.view.center.y = KScreenHeight/2
+//                })
+            }
+        }
+    }
+  
     //页面返回
     @IBAction func getbackButtonClicked(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -98,7 +140,7 @@ class SWMeViewController: UIViewController {
    
     // 功能选择
     @IBAction func functionButtonDidClicked(_ sender: UIButton) {
-        
+        view.endEditing(true)
         var scale:CGFloat
         if (sender.center.x > circleCenter.x + 10.0) {
             scale = 3.0
