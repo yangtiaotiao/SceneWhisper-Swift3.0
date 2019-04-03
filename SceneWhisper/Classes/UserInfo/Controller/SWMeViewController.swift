@@ -67,25 +67,24 @@ class SWMeViewController: UIViewController {
   
         // 获取签名
         let signatureImageURL = URL.init(string: SWUrlHeader + (userInfoModel?.signatureUrl)!)
-        guard let signatureImagedata = NSData(contentsOf: signatureImageURL!) else { return }
-        signatureImage = UIImage(data: signatureImagedata as Data, scale: 1.0)
+        if let signatureImagedata = NSData(contentsOf: signatureImageURL!)  {
+            signatureImage = UIImage(data: signatureImagedata as Data, scale: 1.0)
+        }
         
         // 用户名
-        userName = userInfoModel?.nickName
-        if userName != nil {
-            userNameText.text = userName
-        }
+        userName = userInfoModel?.nickName ?? ""
+        userNameText.text = userName
+        
         userNameText.isHidden = true
         // 用户性别
-        genders = (userInfoModel?.genders)!
-        
-        // 获取用户头像
-        guard  let photoImageURL = URL.init(string: SWUrlHeader + (userInfoModel?.photo)!) else {return ;}
-        let photoImagedata = NSData(contentsOf: photoImageURL)!
-        avatarImage = UIImage(data: photoImagedata as Data, scale: 1.0)
-        
+        genders = userInfoModel?.genders ?? 0
         // 监听通知
         self.registerNotification()
+        // 获取用户头像
+        guard  let photoImageURL = URL.init(string: SWUrlHeader + (userInfoModel?.photo)!) else {return }
+        if let photoImagedata = NSData(contentsOf: photoImageURL){
+            avatarImage = UIImage(data: photoImagedata as Data, scale: 1.0)
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -125,11 +124,7 @@ class SWMeViewController: UIViewController {
     
     @objc func keyBoardWillHide(_ notification:Notification){
         DispatchQueue.main.async {
-            DispatchQueue.main.async {
-//                UIView.animate(withDuration: 0.25, animations: {
-                    self.view.center.y = KScreenHeight/2
-//                })
-            }
+            self.view.center.y = KScreenHeight/2
         }
     }
   
@@ -172,26 +167,22 @@ class SWMeViewController: UIViewController {
     }
     //签名设置
     func signatButtonDidClicked(_ sender: UIButton) {
-                if signatureImage == nil {
-                    infoFunctionButton.setBackgroundImage(UIImage(named:"w个性签名"), for: .normal)
-                } else {
-                    infoFunctionButton.setBackgroundImage(signatureImage!, for: .normal)
-                }
-                infoTipsButton.setTitle("点击设置签名", for: .normal)
-                infoTitleLabel.text = "签名"
-                infoEditType = 1
         
-                infoFunctionButton.isHidden = false
-                userNameText.isHidden = true
+        let sigtImage = signatureImage ?? UIImage(named: "w个性签名")
+        infoFunctionButton.setBackgroundImage(sigtImage!, for: .normal)
+        
+        infoTipsButton.setTitle("点击设置签名", for: .normal)
+        infoTitleLabel.text = "签名"
+        infoEditType = 1
+        
+        infoFunctionButton.isHidden = false
+        userNameText.isHidden = true
     }
     //头像设置
     func avatarButtonDidClicked(_ sender: Any) {
         
-        if avatarImage == nil {
-            infoFunctionButton.setBackgroundImage(UIImage(named:"W头像圆"), for: .normal)
-        } else {
-            infoFunctionButton.setBackgroundImage(avatarImage!, for: .normal)
-        }
+        let avImage = avatarImage ?? UIImage(named:"W头像圆")
+        infoFunctionButton.setBackgroundImage(avImage!, for: .normal)
         
         infoTipsButton.setTitle("点击变换头像", for: .normal)
         infoTitleLabel.text = "头像"
